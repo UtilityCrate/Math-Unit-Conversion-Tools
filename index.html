@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link rel="icon" type="image/x-icon" href="favicon-16x16.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3808373705183829"
+     crossorigin="anonymous"></script>
+    <title>UtilityCrate - Math & Unit Conversion Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+ <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+          <!-- नया PNG लोगो कोड -->
+<div class="flex items-center">
+    <img src="favicon-32x32.png" class="h-8 w-8" alt="UtilityCrate Logo">
+    <span class="ml-2 text-xl font-bold text-gray-800">UtilityCrate</span>
+</div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-primary font-medium">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition">About Us</a>
+                <a href="#tools" class="text-gray-600 hover:text-primary transition">Tools</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary transition">Contact</a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#" class="block py-2 text-primary font-medium">Home</a>
+            <a href="#about" class="block py-2 text-gray-600 hover:text-primary transition">About Us</a>
+            <a href="#tools" class="block py-2 text-gray-600 hover:text-primary transition">Tools</a>
+            <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary transition">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Math & Unit Conversion Tools</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+   
+<!-- Percentage Calculator (Multi-function) -->
+<div class="group block bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300 border border-gray-100 hover:border-blue-600 mt-6">
+  <div class="text-blue-600 mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a4 4 0 00-8 0v2m-3 0a9 9 0 0118 0v3a9 9 0 01-18 0V9zm3 4h12M5 21h14" />
+    </svg>
+  </div>
+  <h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-600">Percentage Calculator</h3>
+  <p class="text-gray-600 mb-4">Calculate percentages in different ways.</p>
+
+  <!-- Tabs -->
+  <div class="flex gap-2 mb-4">
+    <button class="tab-btn px-3 py-1 border border-gray-300 rounded text-sm" onclick="showTab('percentOf')">Find % of Number</button>
+    <button class="tab-btn px-3 py-1 border border-gray-300 rounded text-sm" onclick="showTab('whatPercent')">What % is A of B</button>
+    <button class="tab-btn px-3 py-1 border border-gray-300 rounded text-sm" onclick="showTab('increase')">Percentage Increase</button>
+    <button class="tab-btn px-3 py-1 border border-gray-300 rounded text-sm" onclick="showTab('decrease')">Percentage Decrease</button>
+  </div>
+
+  <!-- Tab Contents -->
+  <div id="percentOf" class="tab-content space-y-3">
+    <input type="number" id="percent" placeholder="Enter percentage (%)" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <input type="number" id="of" placeholder="Enter the number" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <button onclick="calculatePercentOf()" class="w-full bg-blue-600 text-white py-2 rounded-lg">Calculate</button>
+    <div id="resultPercentOf" class="text-sm text-gray-700"></div>
+  </div>
+
+  <div id="whatPercent" class="tab-content space-y-3 hidden">
+    <input type="number" id="valueA" placeholder="Value A" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <input type="number" id="valueB" placeholder="Value B" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <button onclick="calculateWhatPercent()" class="w-full bg-blue-600 text-white py-2 rounded-lg">Calculate</button>
+    <div id="resultWhatPercent" class="text-sm text-gray-700"></div>
+  </div>
+
+  <div id="increase" class="tab-content space-y-3 hidden">
+    <input type="number" id="oldValue1" placeholder="Old Value" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <input type="number" id="newValue1" placeholder="New Value" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <button onclick="calculateIncrease()" class="w-full bg-blue-600 text-white py-2 rounded-lg">Calculate</button>
+    <div id="resultIncrease" class="text-sm text-gray-700"></div>
+  </div>
+
+  <div id="decrease" class="tab-content space-y-3 hidden">
+    <input type="number" id="oldValue2" placeholder="Old Value" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <input type="number" id="newValue2" placeholder="New Value" class="w-full p-2 border border-gray-300 rounded-lg" />
+    <button onclick="calculateDecrease()" class="w-full bg-blue-600 text-white py-2 rounded-lg">Calculate</button>
+    <div id="resultDecrease" class="text-sm text-gray-700"></div>
+  </div>
+</div>
+
+<script>
+function showTab(tabId) {
+  const tabs = document.querySelectorAll(".tab-content");
+  tabs.forEach(tab => tab.classList.add("hidden"));
+  document.getElementById(tabId).classList.remove("hidden");
+
+  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("bg-blue-600", "text-white"));
+  event.target.classList.add("bg-blue-600", "text-white");
+}
+
+// Percentage of number
+function calculatePercentOf() {
+  const percent = parseFloat(document.getElementById("percent").value);
+  const of = parseFloat(document.getElementById("of").value);
+  const result = document.getElementById("resultPercentOf");
+
+  if (isNaN(percent) || isNaN(of)) {
+    result.innerHTML = `<p class="text-red-600">Please enter valid values.</p>`;
+    return;
+  }
+
+  const value = (percent / 100) * of;
+  result.innerHTML = `<p><strong>${percent}%</strong> of <strong>${of}</strong> is <strong>${value.toFixed(2)}</strong>.</p>`;
+}
+
+// What % A is of B
+function calculateWhatPercent() {
+  const a = parseFloat(document.getElementById("valueA").value);
+  const b = parseFloat(document.getElementById("valueB").value);
+  const result = document.getElementById("resultWhatPercent");
+
+  if (isNaN(a) || isNaN(b) || b === 0) {
+    result.innerHTML = `<p class="text-red-600">Please enter valid values.</p>`;
+    return;
+  }
+
+  const percent = (a / b) * 100;
+  result.innerHTML = `<p><strong>${a}</strong> is <strong>${percent.toFixed(2)}%</strong> of <strong>${b}</strong>.</p>`;
+}
+
+// % Increase
+function calculateIncrease() {
+  const oldVal = parseFloat(document.getElementById("oldValue1").value);
+  const newVal = parseFloat(document.getElementById("newValue1").value);
+  const result = document.getElementById("resultIncrease");
+
+  if (isNaN(oldVal) || isNaN(newVal) || oldVal === 0) {
+    result.innerHTML = `<p class="text-red-600">Please enter valid values.</p>`;
+    return;
+  }
+
+  const increase = ((newVal - oldVal) / oldVal) * 100;
+  result.innerHTML = `<p>Percentage increase is <strong>${increase.toFixed(2)}%</strong>.</p>`;
+}
+
+// % Decrease
+function calculateDecrease() {
+  const oldVal = parseFloat(document.getElementById("oldValue2").value);
+  const newVal = parseFloat(document.getElementById("newValue2").value);
+  const result = document.getElementById("resultDecrease");
+
+  if (isNaN(oldVal) || isNaN(newVal) || oldVal === 0) {
+    result.innerHTML = `<p class="text-red-600">Please enter valid values.</p>`;
+    return;
+  }
+
+  const decrease = ((oldVal - newVal) / oldVal) * 100;
+  result.innerHTML = `<p>Percentage decrease is <strong>${decrease.toFixed(2)}%</strong>.</p>`;
+}
+</script>
+<!-- Tool: Simple Interest Calculator -->
+<div class="group block bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 border border-gray-100 hover:border-primary">
+    <div class="text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zM12 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
+        </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-primary">Simple Interest Calculator</h3>
+    <p class="text-gray-600">Calculate simple interest based on principal, rate, and time.</p>
+    <div class="mt-4">
+        <input type="number" id="principal" placeholder="Principal Amount (₹)" class="mb-2 block w-full p-2 text-sm border border-gray-300 rounded-lg">
+        <input type="number" id="rate" placeholder="Annual Interest Rate (%)" class="mb-2 block w-full p-2 text-sm border border-gray-300 rounded-lg">
+        <input type="number" id="time" placeholder="Time (years)" class="mb-2 block w-full p-2 text-sm border border-gray-300 rounded-lg">
+        <button onclick="calculateSimpleInterest()" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Calculate</button>
+        <div id="simple-interest-result" class="mt-4 text-center text-gray-700 font-semibold"></div>
+    </div>
+</div>
+
+<script>
+function calculateSimpleInterest() {
+    const principal = parseFloat(document.getElementById('principal').value);
+    const rate = parseFloat(document.getElementById('rate').value);
+    const time = parseFloat(document.getElementById('time').value);
+
+    if (!isNaN(principal) && !isNaN(rate) && !isNaN(time)) {
+        const interest = (principal * rate * time) / 100;
+        document.getElementById('simple-interest-result').innerText = `Simple Interest: ₹${interest.toFixed(2)}`;
+    } else {
+        document.getElementById('simple-interest-result').innerText = 'Please enter valid values.';
+    }
+}
+</script>
+<!-- Tool: Area, Volume, Perimeter Calculator -->
+<div class="group block bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 border border-gray-100 hover:border-primary mt-8">
+    <div class="text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 8 4-16 3 8h4" />
+        </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-primary">Area, Volume, Perimeter Calculator</h3>
+    <p class="text-gray-600">Calculate area, volume, or perimeter for basic shapes.</p>
+
+    <div class="mt-4 space-y-3">
+        <select id="shape" class="block w-full p-2 border border-gray-300 rounded-lg text-sm">
+            <option value="">Select Shape</option>
+            <option value="square">Square</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+            <option value="cube">Cube</option>
+            <option value="cylinder">Cylinder</option>
+        </select>
+
+        <input type="number" id="input1" placeholder="Input 1" class="block w-full p-2 text-sm border border-gray-300 rounded-lg">
+        <input type="number" id="input2" placeholder="Input 2 (if needed)" class="block w-full p-2 text-sm border border-gray-300 rounded-lg">
+
+        <select id="calculation-type" class="block w-full p-2 border border-gray-300 rounded-lg text-sm">
+            <option value="">Select Calculation</option>
+            <option value="area">Area</option>
+            <option value="volume">Volume</option>
+            <option value="perimeter">Perimeter</option>
+        </select>
+
+        <button onclick="calculateShape()" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Calculate</button>
+        <div id="shape-result" class="mt-4 text-center text-gray-700 font-semibold"></div>
+    </div>
+</div>
+
+<script>
+function calculateShape() {
+    const shape = document.getElementById('shape').value;
+    const type = document.getElementById('calculation-type').value;
+    const input1 = parseFloat(document.getElementById('input1').value);
+    const input2 = parseFloat(document.getElementById('input2').value);
+
+    let result = '';
+
+    if (!shape || !type || isNaN(input1)) {
+        document.getElementById('shape-result').innerText = 'Please enter valid inputs.';
+        return;
+    }
+
+    switch (shape) {
+        case 'square':
+            if (type === 'area') result = input1 * input1;
+            else if (type === 'perimeter') result = 4 * input1;
+            else result = 'Not applicable';
+            break;
+
+        case 'rectangle':
+            if (isNaN(input2)) return document.getElementById('shape-result').innerText = 'Please enter both dimensions.';
+            if (type === 'area') result = input1 * input2;
+            else if (type === 'perimeter') result = 2 * (input1 + input2);
+            else result = 'Not applicable';
+            break;
+
+        case 'circle':
+            if (type === 'area') result = Math.PI * input1 * input1;
+            else if (type === 'perimeter') result = 2 * Math.PI * input1;
+            else result = 'Not applicable';
+            break;
+
+        case 'cube':
+            if (type === 'volume') result = Math.pow(input1, 3);
+            else if (type === 'area') result = 6 * Math.pow(input1, 2);
+            else result = 'Not applicable';
+            break;
+
+        case 'cylinder':
+            if (isNaN(input2)) return document.getElementById('shape-result').innerText = 'Please enter radius and height.';
+            if (type === 'volume') result = Math.PI * Math.pow(input1, 2) * input2;
+            else if (type === 'area') result = 2 * Math.PI * input1 * (input1 + input2);
+            else result = 'Not applicable';
+            break;
+
+        default:
+            result = 'Invalid shape.';
+    }
+
+    if (!isNaN(result)) {
+        document.getElementById('shape-result').innerText = `${type.charAt(0).toUpperCase() + type.slice(1)}: ${result.toFixed(2)}`;
+    } else {
+        document.getElementById('shape-result').innerText = result;
+    }
+}
+</script>
+<!-- Unit Converter Tool -->
+<div class="group block bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300 border border-gray-100 hover:border-blue-600">
+   <div class="text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M5 11h14M5 19h14M5 15h14M3 5h18v16H3V5z" />
+        </svg>
+    </div>
+<h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-600">Unit Converter</h3>
+
+  <!-- Category Selection -->
+  <label class="block mb-2 text-gray-700">Choose Category:</label>
+  <select id="unitCategory" onchange="populateUnits()" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+    <option value="length">Length</option>
+    <option value="weight">Weight</option>
+    <option value="temperature">Temperature</option>
+    <option value="time">Time</option>
+    <option value="speed">Speed</option>
+  </select>
+
+  <!-- Input Fields -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block mb-1 text-gray-700">From:</label>
+      <input type="number" id="inputValue" class="w-full p-2 border border-gray-300 rounded-lg mb-2" />
+      <select id="fromUnit" class="w-full p-2 border border-gray-300 rounded-lg"></select>
+    </div>
+
+    <div>
+      <label class="block mb-1 text-gray-700">To:</label>
+      <input type="text" id="convertedValue" class="w-full p-2 border border-gray-300 rounded-lg mb-2 bg-gray-100" readonly />
+      <select id="toUnit" class="w-full p-2 border border-gray-300 rounded-lg"></select>
+    </div>
+  </div>
+
+  <button onclick="convertUnits()" class="mt-4 w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700">Convert</button>
+</div>
+
+<!-- Tool: Age Calculator -->
+<div class="group block bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 border border-gray-100 hover:border-primary">
+    <div class="text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3v1h6v-1c0-1.657-1.343-3-3-3z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12v1m0 4h.01M6.938 4.938a9 9 0 0112.727 0M4.222 7.757a9 9 0 010 8.486M7.757 19.778a9 9 0 008.486 0" />
+        </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-primary">Age Calculator</h3>
+    <p class="text-gray-600">Calculate your exact age from your date of birth.</p>
+    <div class="mt-4">
+        <input type="date" id="dob" class="mb-2 block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+        <button onclick="calculateAge()" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Calculate</button>
+        <div id="age-result" class="mt-4 text-center font-medium text-gray-700"></div>
+    </div>
+</div>
+
+<script>
+function calculateAge() {
+    const dobInput = document.getElementById("dob").value;
+    const resultDiv = document.getElementById("age-result");
+
+    if (!dobInput) {
+        resultDiv.innerText = "Please select your date of birth.";
+        return;
+    }
+
+    const dob = new Date(dobInput);
+    const today = new Date();
+
+    let years = today.getFullYear() - dob.getFullYear();
+    let months = today.getMonth() - dob.getMonth();
+    let days = today.getDate() - dob.getDate();
+
+    if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    resultDiv.innerText = `You are ${years} years, ${months} months, and ${days} days old.`;
+}
+</script>
+
+<!-- Tool: Date Difference Calculator -->
+<div class="group block bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 border border-gray-100 hover:border-primary">
+    <div class="text-primary mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M5 11h14M5 19h14M5 15h14M3 5h18v16H3V5z" />
+        </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2 text-gray-800 group-hover:text-primary">Date Difference Calculator</h3>
+    <p class="text-gray-600">Calculate the number of years, months, and days between two dates.</p>
+    <div class="mt-4 space-y-2">
+        <label class="block text-sm text-gray-700">Start Date:</label>
+        <input type="date" id="startDate" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
+
+        <label class="block text-sm text-gray-700">End Date:</label>
+        <input type="date" id="endDate" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50">
+
+        <button onclick="calculateDateDifference()" class="w-full mt-3 bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Calculate</button>
+
+        <div id="date-diff-result" class="mt-4 text-center font-medium text-gray-700"></div>
+    </div>
+</div>
+
+<script>
+function calculateDateDifference() {
+    const startDateInput = document.getElementById("startDate").value;
+    const endDateInput = document.getElementById("endDate").value;
+    const resultDiv = document.getElementById("date-diff-result");
+
+    if (!startDateInput || !endDateInput) {
+        resultDiv.innerText = "Please select both dates.";
+        return;
+    }
+
+    const startDate = new Date(startDateInput);
+    const endDate = new Date(endDateInput);
+
+    if (endDate < startDate) {
+        resultDiv.innerText = "End date should be after start date.";
+        return;
+    }
+
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    let months = endDate.getMonth() - startDate.getMonth();
+    let days = endDate.getDate() - startDate.getDate();
+
+    if (days < 0) {
+        months--;
+        days += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    resultDiv.innerText = `Difference: ${years} years, ${months} months, ${days} days`;
+}
+</script>
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Logo and Description -->
+                 <div>
+                    <div class="flex items-center">
+    <img src="favicon-32x32.png" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">UtilityCrate</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Your one-stop solution for all daily calculation needs.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#tools" class="text-gray-400 hover:text-white transition">Tools</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-2xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 UtilityCrate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+    <!-- Browser Image Compression Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/browser-image-compression/2.0.0/browser-image-compression.js"></script>
+    <!-- Image Compressor Script -->
+    <script src="Percentage-Calculator.js"></script>
+     <script src="Unit-Converter-Tool.js"></script>
+     <script src="FD-Calculator.js"></script>
+      <script src="SIP-Calculator.js"></script>
+        <script src="Income-Tax-Calculator.js"></script>
+         <script src="GST-Calculator.js"></script>
+           <script src="Compound-Interest-Calculator.js"></script>
+           <script src="Profit-Margin-Calculator.js"></script>
+            <script src="Break-Even-Point-Calculator.js"></script>
+</body>
+</html>
